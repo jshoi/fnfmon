@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/mailInfo" xmlns:tns="http://www.example.org/mailInfo" elementFormDefault="qualified">
+
+    <element name="Element">
+    	<complexType>
+    		<sequence>
+    			<element name="tran_id" type="string"></element>
+    			<element name="if_id" type="string"></element>
+    			<element name="error_activity" type="string"></element>
+    			<element name="error_code" type="string"></element>
+    			<element name="error_msg" type="string"></element>
+    			<element name="update_time" type="string"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="datas">
+    	<complexType>
+    		<sequence>
+    			<element name="contents" type="string" minOccurs="1" maxOccurs="1"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>

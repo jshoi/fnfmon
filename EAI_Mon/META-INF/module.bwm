@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:property="http://ns.tibco.com/bw/property" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_RmqFEGdREeuNbfmxgUmihw" targetNamespace="http://tns.tibco.com/bw/composite/EAI_Mon" name="EAI_Mon" compositeext:version="1.0.0" compositeext:description="Mail Send Update 모듈추가" compositeext:formatVersion="2">
+  <sca:property xmi:id="_RvbmkGdREeuNbfmxgUmihw" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_RwD4sGdREeuNbfmxgUmihw" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Rwq8sGdREeuNbfmxgUmihw" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_RxZVcGdREeuNbfmxgUmihw" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Rx-kQGdREeuNbfmxgUmihw" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_RykaIGdREeuNbfmxgUmihw" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_RzKQAGdREeuNbfmxgUmihw" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_RzwF4GdREeuNbfmxgUmihw" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_R0Xw8GdREeuNbfmxgUmihw" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_S9NjUH2BEeuEp_o0xlfWaw" name="/COMMON/LOG_LEVEL" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_VCUOoH2BEeuEp_o0xlfWaw" name="/COMMON/ENV" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_biiaYH2BEeuEp_o0xlfWaw" name="/DB_INFO/MAX_ROW" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_dzyEQH2BEeuEp_o0xlfWaw" name="/DB_INFO/SUBSET_SIZE" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_d1UVUH2BEeuEp_o0xlfWaw" name="/DB_INFO/TIME_OUT" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_t4JfwH2BEeuEp_o0xlfWaw" name="/EAI_INFO/JMS/URL" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_wCrdoH2BEeuEp_o0xlfWaw" name="/EAI_INFO/JMS/USERNAME" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_xCVj0H2BEeuEp_o0xlfWaw" name="/EAI_INFO/JMS/PASSWORD" type="property:password" scaext:simpleValue="#!si/o6gOtLmxzmgmquFNjeA==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_CQkKYH2CEeuEp_o0xlfWaw" name="/EAI_INFO/DB/username" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_HiXbMH2CEeuEp_o0xlfWaw" name="/EAI_INFO/DB/password" type="property:password" scaext:simpleValue="#!OVBN6xsm8A/1LvdRWWdK3Q==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_IwHnwH2CEeuEp_o0xlfWaw" name="/EAI_INFO/DB/url" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_JYU3QH2CEeuEp_o0xlfWaw" name="/EAI_INFO/DB/hostname" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_TMAhAJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/username" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_UwGxAJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/password" type="property:password" scaext:simpleValue="#!yy7Ibmu0SvCh5xQDmU6cgw==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_WZYb8JgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/from_email" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Wd9Z8JgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/to_email" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_dVOMsJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/cc_email" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_iAN8MJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/hostname" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_lDv-oJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_7UGpMGd1EeuNbfmxgUmihw" name="ComponentEAI_MON" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_7UGpMWd1EeuNbfmxgUmihw" processName="com.fnf.eai.mon.EAI_MON"/>
+  </sca:component>
+  <sca:component xmi:id="_xiCqIJgFEeux5rX4TEQ_ZQ" name="ComponentsendMailProc" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_xiCqIZgFEeux5rX4TEQ_ZQ" processName="com.fnf.eai.mon.EAI_sendMailProc"/>
+  </sca:component>
+  <sca:component xmi:id="_Nac8AKcbEeusBsxpizIwxw" name="ComponentEAI_LOG" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Nac8AacbEeusBsxpizIwxw" processName="com.fnf.eai.mon.EAI_LOG"/>
+  </sca:component>
+  <sca:component xmi:id="_VrJQUKyAEeuo3fwRaWQjCg" name="ComponentEAI_sendMailProc_O3PL" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_VrJQUayAEeuo3fwRaWQjCg" processName="com.fnf.eai.mon.EAI_sendMailProc_O3PL"/>
+  </sca:component>
+</sca:composite>
