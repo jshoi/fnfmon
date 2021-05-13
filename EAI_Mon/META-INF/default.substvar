@@ -84,6 +84,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>/COMMON/LOG_LEVEL</name>
+			<value>DEV</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -92,6 +93,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>/COMMON/ENV</name>
+			<value>INFO</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -185,6 +187,33 @@
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>/EAI_INFO/DB/idle_timeout</name>
+			<value>180</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>/EAI_INFO/DB/login_timeout</name>
+			<value>10</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>/EAI_INFO/DB/maxconnection</name>
+			<value>20</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
 			<isOverride>false</isOverride>
 			<useLookupValue>false</useLookupValue>
 		</globalVariable>

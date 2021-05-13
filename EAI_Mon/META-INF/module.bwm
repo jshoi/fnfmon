@@ -21,6 +21,9 @@
   <sca:property xmi:id="_HiXbMH2CEeuEp_o0xlfWaw" name="/EAI_INFO/DB/password" type="property:password" scaext:simpleValue="#!OVBN6xsm8A/1LvdRWWdK3Q==" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_IwHnwH2CEeuEp_o0xlfWaw" name="/EAI_INFO/DB/url" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_JYU3QH2CEeuEp_o0xlfWaw" name="/EAI_INFO/DB/hostname" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_RjFGALOXEeuQU7e-ahKTLg" name="/EAI_INFO/DB/idle_timeout" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_S5opQLOXEeuQU7e-ahKTLg" name="/EAI_INFO/DB/login_timeout" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_VwbQMLOXEeuQU7e-ahKTLg" name="/EAI_INFO/DB/maxconnection" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_TMAhAJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/username" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_UwGxAJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/password" type="property:password" scaext:simpleValue="#!yy7Ibmu0SvCh5xQDmU6cgw==" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_WZYb8JgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/from_email" type="XMLSchema:string" publicAccess="true" scalable="true"/>

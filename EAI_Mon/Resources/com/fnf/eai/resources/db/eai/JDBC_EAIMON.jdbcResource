@@ -4,8 +4,11 @@
   <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_T1RdcW6_EeuIWKOb91GBgA">
     <substitutionBindings xmi:id="_QMZMEH2CEeuEp_o0xlfWaw" template="username" propName="/EAI_INFO/DB/username"/>
     <substitutionBindings xmi:id="_ROoFIH2CEeuEp_o0xlfWaw" template="password" propName="/EAI_INFO/DB/password"/>
+    <substitutionBindings xmi:id="_Zxpp8LOXEeuQU7e-ahKTLg" template="maxConnections" propName="/EAI_INFO/DB/maxconnection"/>
     <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_T1Rdcm6_EeuIWKOb91GBgA" jdbcDriver="tibcosoftwareinc.jdbc.postgresql.PostgreSQLDriver">
       <substitutionBindings xmi:id="_3OrZwICAEeu5vPIRv8UHPQ" template="dbURL" propName="/EAI_INFO/DB/url"/>
+      <substitutionBindings xmi:id="_b5hVYLOXEeuQU7e-ahKTLg" template="loginTimeout" propName="/EAI_INFO/DB/login_timeout"/>
+      <substitutionBindings xmi:id="_gkWs0LOXEeuQU7e-ahKTLg" template="connectionIdleTimeout" propName="/EAI_INFO/DB/idle_timeout"/>
     </connectionConfig>
   </jndi:configuration>
 </jndi:namedResource>

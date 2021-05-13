@@ -94,6 +94,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//EAI_Mon///COMMON/LOG_LEVEL</name>
+			<value>DEV</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -139,13 +140,13 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//EAI_Mon///EAI_INFO/DB/url</name>
-			<value>jdbc:tibcosoftwareinc:postgresql://ip-10-200-0-238.ap-northeast-2.compute.internal:8105;DatabaseName=eaimon</value>
+			<value>jdbc:tibcosoftwareinc:postgresql://fnf-eai-dev-db.ch4iazthcd1k.ap-northeast-2.rds.amazonaws.com:5432;DatabaseName=eaimon</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
 			<isOverride>true</isOverride>
 			<useLookupValue>false</useLookupValue>
-			<lookupValue>jdbc:tibcosoftwareinc:postgresql://ip-10-200-0-238.ap-northeast-2.compute.internal:8105;DatabaseName=eaimon</lookupValue>
+			<lookupValue>jdbc:tibcosoftwareinc:postgresql://fnf-eai-dev-db.ch4iazthcd1k.ap-northeast-2.rds.amazonaws.com:5432;DatabaseName=eaimon</lookupValue>
 		</globalVariable>
 		<globalVariable>
 			<name>//EAI_Mon///EAI_INFO/DB/password</name>
@@ -251,6 +252,33 @@
 		<globalVariable>
 			<name>//EAI_Mon///EAI_INFO/SMTP/port</name>
 			<value>25</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//EAI_Mon///EAI_INFO/DB/idle_timeout</name>
+			<value>180</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//EAI_Mon///EAI_INFO/DB/maxconnection</name>
+			<value>20</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//EAI_Mon///EAI_INFO/DB/login_timeout</name>
+			<value>10</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>Integer</type>
