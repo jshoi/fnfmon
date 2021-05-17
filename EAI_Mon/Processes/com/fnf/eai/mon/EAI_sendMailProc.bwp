@@ -251,6 +251,8 @@
                                     <element maxOccurs="1" minOccurs="0"
                                     name="proc_time"
                                     nillable="false" type="dateTime"/>
+                                    <element maxOccurs="1" minOccurs="0"
+                                    name="if_grade" nillable="false" type="string"/>
                                 </sequence>
                             </complexType>
                         </element>
@@ -657,7 +659,7 @@
             </children>
             <children type="3002">
                 <children
-                    description="** JDBCQuery Staement **&#xd;&#xa;SELECT mon.if_id,a.source_path,a.if_code,&#xd;&#xa;mon.tran_id,mon.error_activity,mon.error_code,mon.error_msg,mon.proc_time &#xd;&#xa;FROM if_master a, eai_trans_mon mon&#xd;&#xa;WHERE 1=1&#xd;&#xa;AND a.if_id=mon.if_id&#xd;&#xa;AND mon.step ='ERROR'&#xd;&#xa;AND mon.proc_time >= (now() - interval '90min')&#xd;&#xa;AND mon.mail_yn='N'&#xd;&#xa;ORDER BY mon.proc_time DESC"
+                    description="** JDBCQuery Staement **&#xd;&#xa;SELECT mon.if_id,a.source_path,a.if_code,&#xd;&#xa;mon.tran_id,mon.error_activity,mon.error_code,mon.error_msg,mon.proc_time,a.if_grade&#xd;&#xa;FROM if_master a, eai_trans_mon mon&#xd;&#xa;WHERE 1=1&#xd;&#xa;AND a.if_id=mon.if_id&#xd;&#xa;AND mon.step ='ERROR'&#xd;&#xa;AND mon.proc_time >= (now() - interval '90min')&#xd;&#xa;AND mon.mail_yn='N'&#xd;&#xa;ORDER BY mon.proc_time DESC"
                     fillColor="13369343" fontName="맑은 고딕"
                     lineColor="6737151" lineWidth="1" transparency="0"
                     type="Note" xsi:type="notation:Shape">
@@ -1160,7 +1162,7 @@
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4" type="4006">
             <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
+                <layoutConstraint x="-7" xsi:type="notation:Location" y="-13"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="맑은 고딕" xsi:type="notation:FontStyle"/>
@@ -1318,7 +1320,8 @@
                 <bpws:link name="TimerToJDBCQuery_DEVPRD"
                     tibex:label="DEV | PRD" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="SendMailToLog" tibex:linkType="SUCCESS"/>
-                <bpws:link name="JDBCQueryToForEach" tibex:linkType="SUCCESSWITHCONDITION"/>
+                <bpws:link name="JDBCQueryToForEach_exist"
+                    tibex:label="exist" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="JDBCQueryToExit_noData"
                     tibex:label="noData" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                 <bpws:link name="ForEachToSendMail" tibex:linkType="SUCCESS"/>
@@ -1377,7 +1380,7 @@
                         <bpws:target linkName="TimerToJDBCQuery_DEVPRD"/>
                     </bpws:targets>
                     <bpws:sources>
-                        <bpws:source linkName="JDBCQueryToForEach">
+                        <bpws:source linkName="JDBCQueryToForEach_exist">
                             <tibex:DesignExpression>
                                 <tibex:expression
                                     expression="count($JDBCQuery/Record)>0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
@@ -1413,7 +1416,7 @@
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCQueryActivity"/>
                                     <value
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="SELECT mon.if_id,a.source_path,a.if_code,&#xa;mon.tran_id,mon.error_activity,mon.error_code,mon.error_msg,mon.proc_time &#xa;FROM if_master a, eai_trans_mon mon&#xa;WHERE 1=1&#xa;AND a.if_id=mon.if_id&#xa;AND mon.step ='ERROR'&#xa;AND mon.proc_time >= (now() - interval '90min')&#xa;AND mon.mail_yn='N'&#xa;AND NOT(mon.if_id like '%O3PL%')&#xa;ORDER BY mon.proc_time DESC" xsi:type="jdbcPalette:JDBCQueryActivity">
+                                    sqlStatement="SELECT mon.if_id,a.source_path,a.if_code,&#xa;mon.tran_id,mon.error_activity,mon.error_code,mon.error_msg,mon.proc_time,&#xa;a.if_grade&#xa;FROM if_master a, eai_trans_mon mon&#xa;WHERE 1=1&#xa;AND a.if_id=mon.if_id&#xa;AND mon.step ='ERROR'&#xa;AND mon.proc_time >= (now() - interval '90min')&#xa;AND mon.mail_yn='N'&#xa;AND NOT(mon.if_id like '%O3PL%')&#xa;ORDER BY mon.proc_time DESC" xsi:type="jdbcPalette:JDBCQueryActivity">
                                     <columnMetadata columnIndex="1"
                                     columnName="if_id"
                                     dataType="-1"
@@ -1446,6 +1449,10 @@
                                     columnName="proc_time"
                                     dataType="93"
                                     status="OptionalElement" typeName="TIMESTAMP"/>
+                                    <columnMetadata columnIndex="9"
+                                    columnName="if_grade"
+                                    dataType="1"
+                                    status="OptionalElement" typeName="CHARACTER"/>
                                     </value>
                                 </properties>
                             </activityConfig>
@@ -1524,9 +1531,10 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="0c30226f-0c62-4a96-a262-828c388b60db">
+            <bpws:scope name="ForEach" tibex:group="foreach"
+                tibex:indexToGlobal="false" tibex:xpdlId="0c30226f-0c62-4a96-a262-828c388b60db">
                 <bpws:targets>
-                    <bpws:target linkName="JDBCQueryToForEach"/>
+                    <bpws:target linkName="JDBCQueryToForEach_exist"/>
                 </bpws:targets>
                 <bpws:sources>
                     <bpws:source linkName="ForEachToSendMail"/>
@@ -1601,7 +1609,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://www.example.org/mailInfo&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;JDBCQuery&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns5:datas>&lt;tns5:contents>&lt;xsl:value-of select=&quot;concat(format-dateTime($JDBCQuery/Record[1]/proc_time, '[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]'),' [ ',$JDBCQuery/Record[1]/if_code,'] ',' [ ',$JDBCQuery/Record[1]/source_path,' ]',' [ ',$JDBCQuery/Record[1]/if_id,' ]',' [ ',$JDBCQuery/Record[1]/error_activity,' ] ERROR=[',substring($JDBCQuery/Record[1]/error_msg, 1, 500),']&amp;#xD;&amp;#xA;')&quot;/>&lt;/tns5:contents>&lt;/tns5:datas>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://www.example.org/mailInfo&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;JDBCQuery&quot;/>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns5:datas>&lt;tns5:contents>&lt;xsl:value-of select=&quot;concat(format-dateTime($JDBCQuery/Record[$index]/proc_time, '[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]'),' [',$JDBCQuery/Record[$index]/if_grade,']',' [ ',$JDBCQuery/Record[$index]/if_code,'] ',' [ ',$JDBCQuery/Record[$index]/source_path,' ]',' [ ',$JDBCQuery/Record[$index]/if_id,' ]',' [ ',$JDBCQuery/Record[$index]/error_activity,' ] ERROR=[',substring($JDBCQuery/Record[$index]/error_msg, 1, 500),']&amp;#xD;&amp;#xA;')&quot;/>&lt;/tns5:contents>&lt;/tns5:datas>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -1647,7 +1655,7 @@
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;JDBCQuery&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat($JDBCQuery/Record[1]/tran_id,'|',$JDBCQuery/Record[2]/tran_id)&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns5=&quot;http://www.example.org/mailInfo&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Accumulate&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;$Accumulate/tns5:datas&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity

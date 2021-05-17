@@ -252,6 +252,8 @@
                                     <element maxOccurs="1" minOccurs="0"
                                     name="proc_time"
                                     nillable="false" type="dateTime"/>
+                                    <element maxOccurs="1" minOccurs="0"
+                                    name="if_grade" nillable="false" type="string"/>
                                 </sequence>
                             </complexType>
                         </element>
@@ -1413,7 +1415,7 @@
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCQueryActivity"/>
                                     <value
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="SELECT mon.if_id,a.source_path,a.if_code,&#xa;mon.tran_id,mon.error_activity,mon.error_code,mon.error_msg,mon.proc_time &#xa;FROM if_master a, eai_trans_mon mon&#xa;WHERE 1=1&#xa;AND a.if_id=mon.if_id&#xa;AND mon.step ='ERROR'&#xa;AND mon.proc_time >= (now() - interval '90min')&#xa;AND mon.mail_yn='N'&#xa;AND mon.if_id like '%O3PL%'&#xa;ORDER BY mon.proc_time DESC" xsi:type="jdbcPalette:JDBCQueryActivity">
+                                    sqlStatement="SELECT mon.if_id,a.source_path,a.if_code,&#xa;mon.tran_id,mon.error_activity,mon.error_code,mon.error_msg,mon.proc_time,&#xa;a.if_grade&#xa;FROM if_master a, eai_trans_mon mon&#xa;WHERE 1=1&#xa;AND a.if_id=mon.if_id&#xa;AND mon.step ='ERROR'&#xa;AND mon.proc_time >= (now() - interval '90min')&#xa;AND mon.mail_yn='N'&#xa;AND mon.if_id like '%O3PL%'&#xa;ORDER BY mon.proc_time DESC" xsi:type="jdbcPalette:JDBCQueryActivity">
                                     <columnMetadata columnIndex="1"
                                     columnName="if_id"
                                     dataType="-1"
@@ -1446,6 +1448,10 @@
                                     columnName="proc_time"
                                     dataType="93"
                                     status="OptionalElement" typeName="TIMESTAMP"/>
+                                    <columnMetadata columnIndex="9"
+                                    columnName="if_grade"
+                                    dataType="1"
+                                    status="OptionalElement" typeName="CHARACTER"/>
                                     </value>
                                 </properties>
                             </activityConfig>
@@ -1601,7 +1607,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://www.example.org/mailInfo&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;JDBCQuery&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns5:datas>&lt;tns5:contents>&lt;xsl:value-of select=&quot;concat(format-dateTime($JDBCQuery/Record[1]/proc_time, '[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]'),' [ ',$JDBCQuery/Record[1]/if_code,'] ',' [ ',$JDBCQuery/Record[1]/source_path,' ]',' [ ',$JDBCQuery/Record[1]/if_id,' ]',' [ ',$JDBCQuery/Record[1]/error_activity,' ] ERROR=[',substring($JDBCQuery/Record[1]/error_msg, 1, 500),']&amp;#xD;&amp;#xA;')&quot;/>&lt;/tns5:contents>&lt;/tns5:datas>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://www.example.org/mailInfo&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;JDBCQuery&quot;/>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns5:datas>&lt;tns5:contents>&lt;xsl:value-of select=&quot;concat(format-dateTime($JDBCQuery/Record[$index]/proc_time, '[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]'),' [',$JDBCQuery/Record[$index]/if_grade,']',' [ ',$JDBCQuery/Record[$index]/if_code,'] ',' [ ',$JDBCQuery/Record[$index]/source_path,' ]',' [ ',$JDBCQuery/Record[$index]/if_id,' ]',' [ ',$JDBCQuery/Record[$index]/error_activity,' ] ERROR=[',substring($JDBCQuery/Record[$index]/error_msg, 1, 500),']&amp;#xD;&amp;#xA;')&quot;/>&lt;/tns5:contents>&lt;/tns5:datas>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
