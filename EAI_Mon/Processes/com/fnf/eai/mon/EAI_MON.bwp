@@ -667,6 +667,29 @@
             </xs:complexType>
             <xs:element name="ActivityInput" type="tns:LogParametersType"/>
         </xs:schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+091c80c0-08e2-4ee7-a2b6-05487ff508aa"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"
+            xmlns:Q2="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+091c80c0-08e2-4ee7-a2b6-05487ff508aa">
+            <import namespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <element name="ErrorLinkHandlerFaultData" type="tns:ErrorLinkHandlerFaultDataType"/>
+            <complexType name="ErrorLinkHandlerFaultDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:JDBCConnectionNotFoundException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:InvalidTimeZoneException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:JDBCSQLException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:LoginTimedOutException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:InvalidSQLTypeException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q2:ActivityTimedOutException"/>
+                </choice>
+            </complexType>
+        </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="jschoi"
         createdOn="Fri Feb 05 14:49:35 KST 2021" description=""
@@ -1153,6 +1176,17 @@
             <element href="//0/@process/@activity/@activity/@links/@children.7"/>
             <bendpoints points="[23, -24, -48, 52]$[48, -51, -23, 25]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
+            <styles fontColor="255" fontName="맑은 고딕" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.8"/>
+            <bendpoints points="[20, 25, -51, -60]$[51, 61, -20, -24]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -1208,7 +1242,7 @@
             name="INSERT_EAIMON-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:jdbcUpdateActivityOutput"
             name="INSERT_EAIMON" sca-bpel:internal="true"/>
-        <bpws:variable element="ns7:ActivityErrorData"
+        <bpws:variable element="ns12:ErrorLinkHandlerFaultData"
             name="_error_INSERT_EAIMON" sca-bpel:internal="true"/>
         <bpws:variable element="ns11:SleepInputSchema"
             name="Sleep-input" sca-bpel:internal="true"/>
@@ -1218,6 +1252,8 @@
         <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
         <bpws:variable element="ns:FaultDetail" name="FaultDetails" sca-bpel:internal="true"/>
         <bpws:variable element="ns2:ActivityInput" name="ErrorLog-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns:OptionalErrorReport"
+            name="_errorOptional" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1280,6 +1316,7 @@
                 <bpws:link name="INSERT_EAIMONToExit" tibex:linkType="SUCCESS"/>
                 <bpws:link name="NoDataToSleep" tibex:label="delay" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="SleepToUPDATE_EAIMON" tibex:linkType="SUCCESS"/>
+                <bpws:link name="INSERT_EAIMONToUPDATE_EAIMON" tibex:linkType="ERROR"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1380,6 +1417,7 @@
                     <bpws:targets>
                         <bpws:target linkName="NoDataToJDBCUpdate1_otherwise"/>
                         <bpws:target linkName="SleepToUPDATE_EAIMON"/>
+                        <bpws:target linkName="INSERT_EAIMONToUPDATE_EAIMON"/>
                     </bpws:targets>
                     <bpws:sources>
                         <bpws:source linkName="UPDATE_EAIMONToExit"/>
@@ -1458,6 +1496,14 @@
                     </bpws:targets>
                     <bpws:sources>
                         <bpws:source linkName="INSERT_EAIMONToExit"/>
+                        <bpws:source
+                            linkName="INSERT_EAIMONToUPDATE_EAIMON"
+                            tibex:faultDetailsVar="INSERT_EAIMON" tibex:faultNameVar="FaultName">
+                            <tibex:DesignExpression>
+                                <tibex:expression expression="##error##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                            </tibex:DesignExpression>
+                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##error##]]></bpws:transitionCondition>
+                        </bpws:source>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
