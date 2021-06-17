@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <packaging:packageUnit xmlns:packaging="http://schemas.tibco.com/tra/model/core/PackagingModel" xmlns:property="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <packaging:description>[1.1.2] UpSert 로직추가</packaging:description>
+  <packaging:description>[1.2.0] START DebugData 추가</packaging:description>
   <packaging:properties>
     <packaging:property>
       <packaging:name>//EAI_Mon//BW.DEPLOYMENTUNIT.TYPE</packaging:name>
@@ -224,7 +224,7 @@
     <packaging:module>
       <packaging:symbolicName>EAI_Mon</packaging:symbolicName>
       <packaging:technologyType>osgi-bundle,bw-appmodule</packaging:technologyType>
-      <packaging:technologyVersion>1.0.1.qualifier</packaging:technologyVersion>
+      <packaging:technologyVersion>1.0.0.qualifier</packaging:technologyVersion>
     </packaging:module>
   </packaging:modules>
 </packaging:packageUnit>
