@@ -1365,7 +1365,7 @@
                                     endTime="2021-04-08T10:00:58.671+0900"
                                     intervalUnit="Minute"
                                     startTime="2021-04-08T10:00:00.000+0900"
-                                    timeInterval="2" xsi:type="generalactivities:Timer"/>
+                                    timeInterval="1" xsi:type="generalactivities:Timer"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
@@ -1531,8 +1531,7 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach"
-                tibex:indexToGlobal="false" tibex:xpdlId="0c30226f-0c62-4a96-a262-828c388b60db">
+            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="0c30226f-0c62-4a96-a262-828c388b60db">
                 <bpws:targets>
                     <bpws:target linkName="JDBCQueryToForEach_exist"/>
                 </bpws:targets>
