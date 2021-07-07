@@ -641,8 +641,6 @@
             <element name="jdbcQueryActivityInput">
                 <complexType>
                     <sequence>
-                        <element maxOccurs="1" minOccurs="1" name="role"
-                            nillable="true" type="string"/>
                         <element maxOccurs="1" minOccurs="0"
                             name="ServerTimeZone" type="string"/>
                         <element maxOccurs="1" minOccurs="0"
@@ -1492,7 +1490,7 @@
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+e0dbd578-e38d-42ad-baad-cf7ad21fe863+input&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:tns=&quot;http://www.example.org/smsInfo&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&lt;tns3:jdbcQueryActivityInput>&lt;role>&lt;xsl:value-of select=&quot;concat($Start/tns:source_system,'_',$Start/tns:target_system)&quot;/>&lt;/role>&lt;/tns3:jdbcQueryActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+e0dbd578-e38d-42ad-baad-cf7ad21fe863+input&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:tns=&quot;http://www.example.org/smsInfo&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&lt;tns3:jdbcQueryActivityInput/>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1511,10 +1509,7 @@
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCQueryActivity"/>
                                     <value
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="SELECT cellphone&#xa;  FROM eai_sms_info&#xa;  WHERE role=?&#xa;  OR role='EAI'" xsi:type="jdbcPalette:JDBCQueryActivity">
-                                    <PreparedParameters
-                                    DataType="12"
-                                    DataTypeDisplayValue="VARCHAR" ParameterName="role"/>
+                                    sqlStatement="SELECT cellphone&#xa;  FROM eai_sms_info&#xa;  WHERE role='EAI'" xsi:type="jdbcPalette:JDBCQueryActivity">
                                     <columnMetadata columnIndex="1"
                                     columnName="cellphone"
                                     dataType="12"
