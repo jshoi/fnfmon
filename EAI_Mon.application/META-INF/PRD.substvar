@@ -285,6 +285,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//EAI_Mon///LMS_INFO/HTTP/authorization</name>
+			<value>Authorization</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -302,6 +303,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//EAI_Mon///LMS_INFO/HTTP/password</name>
+			<value>fnfAPIdb01;Pwdfnf01A!</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
