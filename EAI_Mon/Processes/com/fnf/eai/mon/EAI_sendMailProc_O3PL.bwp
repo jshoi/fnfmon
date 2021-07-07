@@ -1441,9 +1441,9 @@
                                     <type href="http://ns.tibco.com/bw/palette/generalactivities#//Timer"/>
                                     <value
                                     endTime="2021-04-08T10:00:58.671+0900"
-                                    intervalUnit="Minute"
+                                    intervalUnit="Second"
                                     startTime="2021-04-08T10:00:00.000+0900"
-                                    timeInterval="2" xsi:type="generalactivities:Timer"/>
+                                    timeInterval="30" xsi:type="generalactivities:Timer"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
@@ -1600,13 +1600,15 @@
                             xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
                             xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
                             xmlns:jdbcPalette="http://ns.tibco.com/bw/palette/jdbc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <attributeBindings
+                                bindingType="moduleProperty"
+                                eAttributeName="timeout" processProperty="TIME_OUT"/>
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCUpdateActivity"/>
                                     <value batchUpdate="true"
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="UPDATE public.eai_trans_mon&#xa;&#x9;SET mail_yn='Y'&#xa;&#x9;WHERE tran_id =?"
-                                    timeout="10" xsi:type="jdbcPalette:JDBCUpdateActivity">
+                                    sqlStatement="UPDATE public.eai_trans_mon&#xa;&#x9;SET mail_yn='Y'&#xa;&#x9;WHERE tran_id =?" xsi:type="jdbcPalette:JDBCUpdateActivity">
                                     <PreparedParameters
                                     DataType="12"
                                     DataTypeDisplayValue="VARCHAR" ParameterName="TRAN_ID"/>
