@@ -687,6 +687,22 @@
         <children type="2001">
             <children type="5001"/>
             <children type="3002">
+                <children
+                    description="ㅇ인터페이스 긴급도가 High 인 대상에 한하여 송신시스템 및 EAI담당자에게 Call LMS(문자발송)"
+                    fillColor="13369343" fontName="맑은 고딕"
+                    lineColor="6737151" lineWidth="1" transparency="0"
+                    type="Note" xsi:type="notation:Shape">
+                    <children type="DiagramName" xsi:type="notation:BasicDecorationNode">
+                        <element xsi:nil="true"/>
+                    </children>
+                    <children type="Description" xsi:type="notation:BasicDecorationNode">
+                        <element xsi:nil="true"/>
+                    </children>
+                    <styles xsi:type="notation:TextStyle"/>
+                    <styles xsi:type="notation:LineTypeStyle"/>
+                    <element xsi:nil="true"/>
+                    <layoutConstraint x="509" xsi:type="notation:Bounds" y="-100"/>
+                </children>
                 <styles xsi:type="notation:SortingStyle"/>
                 <styles xsi:type="notation:FilteringStyle"/>
             </children>
@@ -1072,7 +1088,7 @@
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
             target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5" type="4006">
             <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
+                <layoutConstraint x="5" xsi:type="notation:Location" y="-17"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="맑은 고딕" xsi:type="notation:FontStyle"/>
@@ -1127,7 +1143,7 @@
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5"
             target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6" type="4006">
             <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
+                <layoutConstraint x="-5" xsi:type="notation:Location" y="16"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="맑은 고딕" xsi:type="notation:FontStyle"/>
@@ -1146,6 +1162,18 @@
             <element href="//0/@process/@activity/@activity/@links/@children.6"/>
             <bendpoints
                 points="[25, 0, -187, 94]$[212, 0, 0, 94]$[212, -69, 0, 25]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint x="-61" xsi:type="notation:Location" y="17"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="맑은 고딕" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.7"/>
+            <bendpoints
+                points="[0, 25, -538, 25]$[0, 134, -538, 134]$[538, 134, 0, 134]$[538, 25, 0, 25]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -1267,14 +1295,17 @@
         </bpws:faultHandlers>
         <bpws:flow name="flow">
             <bpws:links>
-                <bpws:link name="StartToRenderJSON" tibex:linkType="SUCCESS"/>
+                <bpws:link name="StartToRenderJSON_High"
+                    tibex:label="High" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="RenderJSONToEnd" tibex:linkType="SUCCESS"/>
                 <bpws:link name="SendHTTPRequestToEnd" tibex:linkType="SUCCESS"/>
                 <bpws:link name="LogToSendHTTPRequest" tibex:linkType="SUCCESS"/>
                 <bpws:link name="JDBCQueryToRenderJSON_count0"
                     tibex:label="count>0" tibex:linkType="SUCCESSWITHCONDITION"/>
-                <bpws:link name="JDBCQueryToEmpty" tibex:linkType="SUCCESSWITHNOCONDITION"/>
+                <bpws:link name="JDBCQueryToEmpty_otherwise"
+                    tibex:label="otherwise" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                 <bpws:link name="EmptyToEnd" tibex:linkType="SUCCESS"/>
+                <bpws:link name="StartToEnd" tibex:label="otherwise" tibex:linkType="SUCCESSWITHNOCONDITION"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1282,7 +1313,20 @@
                     tibex:xpdlId="fb537774-3d99-4d42-b0e9-c82cfeacfc67"
                     variable="Start" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:sources>
-                        <bpws:source linkName="StartToRenderJSON"/>
+                        <bpws:source linkName="StartToRenderJSON_High">
+                            <tibex:DesignExpression>
+                                <tibex:expression
+                                    expression="upper-case($Start/ns0:if_grade)='HIGH'" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                            </tibex:DesignExpression>
+                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[upper-case($Start/ns0:if_grade)='HIGH']]></bpws:transitionCondition>
+                        </bpws:source>
+                        <bpws:source linkName="StartToEnd">
+                            <tibex:DesignExpression>
+                                <tibex:expression
+                                    expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                            </tibex:DesignExpression>
+                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
+                        </bpws:source>
                     </bpws:sources>
                     <tibex:eventSource>
                         <tibex:StartEvent xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
@@ -1295,6 +1339,7 @@
                     <bpws:targets>
                         <bpws:target linkName="SendHTTPRequestToEnd"/>
                         <bpws:target linkName="EmptyToEnd"/>
+                        <bpws:target linkName="StartToEnd"/>
                     </bpws:targets>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1427,7 +1472,7 @@
                     name="JDBCQuery" outputVariable="JDBCQuery"
                     tibex:xpdlId="e0dbd578-e38d-42ad-baad-cf7ad21fe863" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="StartToRenderJSON"/>
+                        <bpws:target linkName="StartToRenderJSON_High"/>
                     </bpws:targets>
                     <bpws:sources>
                         <bpws:source linkName="JDBCQueryToRenderJSON_count0">
@@ -1437,7 +1482,7 @@
                             </tibex:DesignExpression>
                             <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($JDBCQuery/Record)>0]]></bpws:transitionCondition>
                         </bpws:source>
-                        <bpws:source linkName="JDBCQueryToEmpty">
+                        <bpws:source linkName="JDBCQueryToEmpty_otherwise">
                             <tibex:DesignExpression>
                                 <tibex:expression
                                     expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
@@ -1483,7 +1528,7 @@
             </bpws:extensionActivity>
             <bpws:empty name="NoData" tibex:xpdlId="b2a7beed-3bd2-49d6-b1fe-97afec73afcd">
                 <bpws:targets>
-                    <bpws:target linkName="JDBCQueryToEmpty"/>
+                    <bpws:target linkName="JDBCQueryToEmpty_otherwise"/>
                 </bpws:targets>
                 <bpws:sources>
                     <bpws:source linkName="EmptyToEnd"/>

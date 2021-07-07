@@ -29,6 +29,7 @@
     			<element name="target_system" type="string"></element>
     			<element name="msg" type="string"></element>
     			<element name="title" type="string"></element>
+    			<element name="if_grade" type="string"></element>
     		</sequence>
     	</complexType>
     </element>
