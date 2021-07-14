@@ -204,7 +204,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//EAI_Mon///EAI_INFO/SMTP/cc_email</name>
-			<value>jschoi@futuregen.co.kr,sjy1236@futuregen.co.kr</value>
+			<value>jschoi@futuregen.co.kr,sjy1236@futuregen.co.kr,hjpark@Futuregen365.onmicrosoft.com</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
