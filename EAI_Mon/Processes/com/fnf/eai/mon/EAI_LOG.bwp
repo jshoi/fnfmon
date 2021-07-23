@@ -1454,11 +1454,11 @@
         <bpws:variable element="ns:FaultDetail" name="FaultDetails" sca-bpel:internal="true"/>
         <bpws:variable element="ns4:ActivityInput" name="ErrorLog-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns5:ActivityInput"
-            name="JMSSendMessage-input" sca-bpel:internal="true"/>
+            name="JMSSendMessageERR-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:aEmptyOutputClass"
-            name="JMSSendMessage" sca-bpel:internal="true"/>
+            name="JMSSendMessageERR" sca-bpel:internal="true"/>
         <bpws:variable element="ns7:ActivityErrorData"
-            name="_error_JMSSendMessage" sca-bpel:internal="true"/>
+            name="_error_JMSSendMessageERR" sca-bpel:internal="true"/>
         <bpws:variable element="ns:ErrorReport" name="_error" sca-bpel:internal="true"/>
         <bpws:variable name="ENV" sca-bpel:hotUpdate="false"
             sca-bpel:privateProperty="true" sca-bpel:property="yes"
@@ -1515,9 +1515,9 @@
                         </bpws:extensionActivity>
                         <bpws:extensionActivity>
                             <tibex:activityExtension
-                                inputVariable="JMSSendMessage-input"
-                                name="JMSSendMessage"
-                                outputVariable="JMSSendMessage"
+                                inputVariable="JMSSendMessageERR-input"
+                                name="JMSSendMessageERR"
+                                outputVariable="JMSSendMessageERR"
                                 tibex:xpdlId="784d6888-a254-42b2-a3ff-55a37ae2d3d8" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                 <bpws:targets>
                                     <bpws:target linkName="ErrorLogToJMSSendMessage"/>
@@ -1541,6 +1541,7 @@
                                     bodyTypeQName="tns_1610583409932:JobTotal"
                                     connectionReference="jmsConnection"
                                     messageType="XML Text"
+                                    messagingStyle="Queue"
                                     priority="4" xsi:type="jms:JMSSenderActivityConfiguration"/>
                                     </properties>
                                     </activityConfig>
