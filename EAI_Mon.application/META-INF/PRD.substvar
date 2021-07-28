@@ -204,7 +204,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//EAI_Mon///EAI_INFO/SMTP/cc_email</name>
-			<value>jschoi@futuregen.co.kr,sjy1236@futuregen.co.kr</value>
+			<value>jschoi@futuregen.co.kr,sjy1236@futuregen.co.kr,hjpark@Futuregen365.onmicrosoft.com</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -280,6 +280,50 @@
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//EAI_Mon///LMS_INFO/HTTP/authorization</name>
+			<value>Authorization</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//EAI_Mon///LMS_INFO/HTTP/port</name>
+			<value>4433</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//EAI_Mon///LMS_INFO/HTTP/password</name>
+			<value>fnfAPIdb01;Pwdfnf01A!</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//EAI_Mon///LMS_INFO/hostname</name>
+			<value>gw-api.cjmplace.com</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>/EAI_INFO/DB/url</name>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
 			<isOverride>false</isOverride>
 			<useLookupValue>false</useLookupValue>
 		</globalVariable>

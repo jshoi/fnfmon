@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/smsInfo" elementFormDefault="qualified" targetNamespace="http://www.example.org/smsInfo">
+    <element name="element">
+    	<complexType>
+    		<sequence>
+    			<element maxOccurs="1" minOccurs="1" name="msg_type" type="string"/>
+    			<element maxOccurs="unbounded" minOccurs="1" name="msg_data">
+    				<complexType>
+    					<sequence>
+    						<element name="msg_key" type="string"/>
+    						<element name="sub_id" type="string"/>
+    						<element name="sender_number" type="string">
+    						</element>
+    						<element name="receiver_number" type="string">
+    						</element>
+    						<element name="title" type="string"/>
+    						<element name="msg" type="string"/>
+    					</sequence>
+    				</complexType>
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="datas">
+    	<complexType>
+    		<sequence>
+    			<element name="source_system" type="string"></element>
+    			<element name="target_system" type="string"></element>
+    			<element name="msg" type="string"></element>
+    			<element name="title" type="string"></element>
+    			<element name="if_grade" type="string"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>

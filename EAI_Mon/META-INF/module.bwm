@@ -31,6 +31,10 @@
   <sca:property xmi:id="_dVOMsJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/cc_email" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_iAN8MJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/hostname" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_lDv-oJgfEeux5rX4TEQ_ZQ" name="/EAI_INFO/SMTP/port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_3-PZ8N4AEeuW5rHvGO7yog" name="/LMS_INFO/hostname" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_5WIZ8N4AEeuW5rHvGO7yog" name="/LMS_INFO/HTTP/authorization" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_72RbcN4AEeuW5rHvGO7yog" name="/LMS_INFO/HTTP/password" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_8u-lEN4AEeuW5rHvGO7yog" name="/LMS_INFO/HTTP/port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_7UGpMGd1EeuNbfmxgUmihw" name="ComponentEAI_MON" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_7UGpMWd1EeuNbfmxgUmihw" processName="com.fnf.eai.mon.EAI_MON"/>
   </sca:component>
