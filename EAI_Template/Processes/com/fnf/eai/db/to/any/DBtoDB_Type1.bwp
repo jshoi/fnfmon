@@ -580,6 +580,11 @@
             <element name="jdbcUpdateActivityInput">
                 <complexType>
                     <sequence>
+                        <element maxOccurs="unbounded" minOccurs="0" name="Record">
+                            <complexType>
+                                <sequence/>
+                            </complexType>
+                        </element>
                         <element maxOccurs="1" minOccurs="0"
                             name="ServerTimeZone" type="string"/>
                         <element maxOccurs="1" minOccurs="0"
@@ -2734,6 +2739,7 @@
                                     name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCUpdateActivity"/>
                                     <value
+                                    batchUpdate="true"
                                     sharedResourceProperty="jdbcProperty"
                                     timeout="10" xsi:type="jdbcPalette:JDBCUpdateActivity"/>
                                     </properties>
