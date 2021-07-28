@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
+	xmlns:tns="http://www.example.org/OMS_MERP_ONL_0001" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/OMS_MERP_ONL_0001">
+
+	<xsd:element name="OrderRelease">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Extn">
+					<xsd:complexType>
+						<xsd:attribute name="CountryOfOrigin" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="24"></xsd:maxLength>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+						<xsd:attribute name="RouteType" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="1"></xsd:maxLength>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Order">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Extn">
+								<xsd:complexType>
+									<xsd:attribute name="Brand" use="required">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="24"></xsd:maxLength>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute name="YearCode" use="required">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="4"></xsd:maxLength>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute name="SeasonCode" use="required">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="4"></xsd:maxLength>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute name="ProductLine" use="required">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="100"></xsd:maxLength>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+
+
+
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="EnterpriseCode" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="24"></xsd:maxLength>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+						<xsd:attribute name="OrderNo" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="40"></xsd:maxLength>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="PersonInfoShipTo">
+					<xsd:complexType>
+						<xsd:attribute name="Country" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="40"></xsd:maxLength>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="OrderLines">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="OrderLine">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="Item">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="PrimaryInformation">
+														<xsd:complexType>
+															<xsd:attribute name="Brand" use="required">
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="24"></xsd:maxLength>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:attribute>
+															<xsd:attribute name="YearCode" use="required">
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="4"></xsd:maxLength>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:attribute>
+															<xsd:attribute name="SeasonCode" use="required">
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="1"></xsd:maxLength>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:attribute>
+															<xsd:attribute name="ProductLine" use="required">
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="100"></xsd:maxLength>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:attribute>
+															<xsd:attribute name="ColorCode" use="required">
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="40"></xsd:maxLength>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:attribute>
+															<xsd:attribute name="SizeCode" use="required">
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="40"></xsd:maxLength>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:attribute>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+												<xsd:attribute name="ItemID" use="required">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="40"></xsd:maxLength>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+												<xsd:attribute name="ProductClass" use="required">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="10"></xsd:maxLength>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+												<xsd:attribute name="UnitOfMeasure" use="required">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="40"></xsd:maxLength>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+									<xsd:attribute name="PrimeLineNo" use="required">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:nonNegativeInteger">
+												<xsd:maxInclusive value="5"></xsd:maxInclusive>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute name="StatusQuantity" use="required">
+											<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="40"></xsd:maxLength>
+														</xsd:restriction>
+													</xsd:simpleType>
+									</xsd:attribute>
+
+
+
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="OrderDates">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="OrderDate">
+								<xsd:complexType>
+									<xsd:attribute name="DateTypeId" use="required">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:dateTime">
+
+											</xsd:restriction>
+										</xsd:simpleType>
+										</xsd:attribute>
+										<xsd:attribute name="ExpectedDate" use="required">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:dateTime">
+
+												</xsd:restriction>
+											</xsd:simpleType>
+										</xsd:attribute>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="BuyerOrganizationCode" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="40"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="OrderDate" use="required">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:dateTime">
+
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="ReleaseNo" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="5"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+				</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
