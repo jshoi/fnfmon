@@ -26,6 +26,7 @@
     xmlns:ns24="http://www.example.org/MERP_O3PL_BAT_0005_Request"
     xmlns:ns25="http://www.example.org/MERP_O3PL_BAT_0005_Response"
     xmlns:ns26="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"
+    xmlns:ns27="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/jdbc+118a1c69-ce71-406b-97aa-851cbd9a3257+output"
     xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.JDBCQuery"
     xmlns:ns5="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+b3635adf-d4ac-48b1-ae9c-90ec364360ba+RestInvokeInput"
@@ -913,6 +914,18 @@
                     </sequence>
                 </complexType>
             </element>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
+                </choice>
+            </complexType>
         </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="jschoi"
@@ -2670,6 +2683,8 @@
             name="_error_SELECT_ID" sca-bpel:internal="true"/>
         <bpws:variable name="index" type="xsd:int"/>
         <bpws:variable element="ns26:DefaultFault" name="Throw-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns27:ActivityErrorData"
+            name="_error_Throw" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
