@@ -1530,7 +1530,7 @@
                                     <layoutConstraint
                                     height="40" width="40"
                                     x="389"
-                                    xsi:type="notation:Bounds" y="233"/>
+                                    xsi:type="notation:Bounds" y="237"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
