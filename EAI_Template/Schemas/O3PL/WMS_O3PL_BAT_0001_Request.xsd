@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/WMS_O3PL_BAT_0001_Request" xmlns:tns="http://www.example.org/WMS_O3PL_BAT_0001_Request" elementFormDefault="qualified">
+	<element name="element">
+		<complexType>
+			<sequence>
+				<element name="REQUEST_LIST" minOccurs="1"
+								maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="brandCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="companyIPCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="intendedPushType" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="intendedPushDate" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="ipScheduleNumber" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="ipScheduleSequence" type="integer"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="boxNumber" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="productCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="itemCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="seasonCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="colorCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="sizeCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="quantity" type="integer"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="fnfKey" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="memo" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
