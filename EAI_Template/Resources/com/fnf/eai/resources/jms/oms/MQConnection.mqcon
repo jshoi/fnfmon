@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:mqcon="http://ns.tibco.com/bw/palette/mqconfiguration" xmi:id="_cu4uIVTDEeulPID_NHzCZg" name="com.fnf.eai.resources.jms.oms.MQConnection" type="mqcon:MqConnectionConfiguration">
-  <jndi:configuration xsi:type="mqcon:MqConnection" xmi:id="_cu4uIlTDEeulPID_NHzCZg">
-    <substitutionBindings xmi:id="_HAS90GnXEeujoM_fZ1RBmA" template="Host" propName="/OMS_INFO/hostname"/>
-    <substitutionBindings xmi:id="_J2fu4GnXEeujoM_fZ1RBmA" template="Port" propName="/OMS_INFO/port"/>
-    <substitutionBindings xmi:id="_LDd4UGnXEeujoM_fZ1RBmA" template="ServerChannel" propName="/OMS_INFO/channelname"/>
-  </jndi:configuration>
-</jndi:namedResource>
