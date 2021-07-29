@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/MERP_O3PL_BAT_0007_Request" xmlns:tns="http://www.example.org/MERP_O3PL_BAT_0007_Request" elementFormDefault="qualified">
+	<element name="element">
+		<complexType>
+			<sequence>
+				<element name="REQUEST_LIST" minOccurs="1"
+								maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="brandCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="companyIPCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="intendedPushType"
+								type="string" minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="intendedPushDate"
+								type="string" minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="ipScheduleNumber"
+								type="string" minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="ipScheduleSequence"
+								type="int" minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="productCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="seasonCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="colorCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="sizeCode" type="string"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="rfidUid" type="string"
+								minOccurs="1" maxOccurs="1" nillable="true">
+							</element>
+							<element name="quantity" type="int"
+								minOccurs="1" maxOccurs="1">
+							</element>
+							<element name="sendDate" type="string" minOccurs="1" maxOccurs="1"></element>
+							<element name="sendShopcode" type="string" minOccurs="1" maxOccurs="1"></element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
